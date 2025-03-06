@@ -130,6 +130,7 @@ celerybeat.pid
 # Environments
 .env
 .env.example
+autogen_service.py
 .venv
 env/
 venv/
