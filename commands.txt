@@ -1,0 +1,49 @@
+# create environment
+python -m venv venv
+
+# load the environment
+# for windows
+.\venv\Scripts\activate
+# for linux or Mac OS
+source venv/Scripts/activate
+
+# install packages
+pip install -r requirements.txt
+
+# install packages
+pip install streamlit
+pip install st-pages
+pip install python-dotenv
+pip install openai --upgrade
+pip install PyPDF2
+pip install beautifulsoup4
+pip install streamlit-markmap
+pip install streamlit-elements
+pip install azure-cognitiveservices-speech
+
+
+pip install langchain --upgrade
+#pip install langchain-community langchain-core --upgrade
+pip install langchain-openai --upgrade
+pip install azure-search-documents --pre --upgrade
+pip install azure-identity
+
+
+
+
+#pip install chromadb
+#pip install Matplotlib
+#pip install plotly
+
+# for windows
+.\venv\Scripts\activate
+# for linux
+source venv/Scripts/activate
+
+# run app
+#chroma run
+streamlit run src/app.py
+
+
+# test run Script
+# python -m streamlit run src/app.py --server.port 8000 --server.address 0.0.0.0

@@ -1,0 +1,92 @@
+import os
+import base64
+import requests
+from flask import Flask, request, render_template, url_for, jsonify
+from flask_wtf import FlaskForm
+from wtforms import StringField, URLField, TextAreaField, FileField, SubmitField, validators
+from wtforms.validators import InputRequired
+from werkzeug.utils import secure_filename
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'supersecretkey'
+app.config['UPLOAD_FOLDER'] = 'static/files'
+
+class UploadFileForm(FlaskForm):
+    file = FileField("File", validators=[InputRequired()])
+    title = StringField("Title", validators=[InputRequired()])
+    submit = SubmitField("Upload Document")
+
+
+def call_service_load_document(base_url, filename, file_content, title):
+    url = base_url + url_for('command_load_document') #'/assistent/load_document'
+    app.logger.info('url %s', url)
+    headers = {'Content-Type': 'application/json'}
+    encoded_string = base64.b64encode(file_content).decode("utf8")
+    json = {"fileName": secure_filename(filename),
+            "file": encoded_string, 
+            "title": title}
+    response = requests.post(url, headers=headers, json=json)
+    #app.logger.info('response.text %s', response.text)
+    return response.text
+
+
+def call_service_analize_image(base_url, filename, image, prompt):
+    #send image with json format
+    url = base_url + url_for('command_analize_image') #'/assistent/analize_image'
+    headers = {'Content-Type': 'application/json'}
+    encoded_string = base64.b64encode(image).decode("utf8")
+    #print(f"image {image}")
+    #print(f"encoded_string {encoded_string}")
+    json = {"fileName": secure_filename(filename),
+            "file": encoded_string, 
+            "prompt": prompt}
+    response = requests.post(url, headers=headers, json=json)
+    #print(response.text)
+    #print("Status Code", response.status_code)
+    #print("JSON Response ", response.json())
+    return response.text
+
+
+#@app.route('/assistent/loadimage', methods=['POST'])
+#def loadimage():
+#
+#    # check if the post request has the file part
+#    if 'file' not in request.files:
+#        return get_response('No file part', 400) 
+#    
+#    file = request.files['file']
+#    # If the user does not select a file, the browser submits an
+#    # empty file without a filename.
+#    if file.filename == '':
+#        return get_response('No selected file', 400) 
+#
+#    if file and allowed_file(file.filename):
+#        filename = secure_filename(file.filename)
+#
+#        load_document(filename, file.stream, file)
+#
+#        path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+#        #print(path)
+#        file.save(path)
+#        #file.stream
+#    else:
+#        return get_response('File extension not allowed.', 400) 
+#
+#    return get_response('File has been uploaded.', 200) 
+
+#@app.route('/', methods=['GET', 'POST'])
+#@app.route('/client', methods=['GET', 'POST'])
+#def home():
+#    form = UploadFileForm()
+#    
+#    if request.method == 'POST':
+#        if form.validate_on_submit():
+#            file = form.file.data
+#            file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config['UPLOAD_FOLDER'], secure_filename(file.filename)))
+#            call_service(file.filename, file.read(), request.form.get("prompt"))
+#            return "File has been uploaded."
+#    
+#    return render_template('index.html', form=form)
+
+#if __name__ == '__main__':
+#    app.run(debug=True)

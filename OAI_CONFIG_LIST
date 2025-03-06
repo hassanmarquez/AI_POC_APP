@@ -1,0 +1,26 @@
+[        
+    {                
+        "model": "gpt-4",                
+        "api_key": "sk-u4V8dGD5v1fSLgtYP-j7Jwz6wdBRu7XHG52EpWoNFxT3BlbkFJ0gkbtuVQpj5b_Pkh4pT80La_aofoLYCZvvvZQGWAEA",
+        "tags": ["gpt-4", "tool"]        
+    },           
+    {                
+        "model": "gpt-4-1106-preview",                
+        "api_key": "b0d3e6aebc2d4e00b2e76fa9faf8b66a",                
+        "base_url": "https://aihackathoneastcan.openai.azure.com/",                
+        "api_type": "azure",                
+        "api_version": "2024-05-01-preview"        
+    },
+    {                
+        "model": "gpt-4o",                
+        "api_key": "sk-u4V8dGD5v1fSLgtYP-j7Jwz6wdBRu7XHG52EpWoNFxT3BlbkFJ0gkbtuVQpj5b_Pkh4pT80La_aofoLYCZvvvZQGWAEA",
+        "tags": ["gpt-4o", "tool"]        
+    },        
+    {                
+        "model": "gpt-4-vision-preview",                
+        "api_key": "87291b1cac54419b8a23dcd171714b2b",                
+        "base_url": "https://aihackathoncenswe.openai.azure.com/",                
+        "api_type": "azure",                
+        "api_version": "2024-05-01-preview"        
+    }
+]

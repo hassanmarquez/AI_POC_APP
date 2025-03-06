@@ -1,0 +1,28 @@
+*****************************LOCAL ENVIRONMENT
+ 
+Commands to create the docker image
+#build the image
+docker build -t api-backend:1.0 .
+ 
+#Run the docker image
+docker run -d --name api-backend-inlab -p 3000:3000 api-backend:1.0
+ 
+ 
+******************************AZURE ENVIRONMENT
+ 
+*****************BACKEND*****************
+ 
+**** Command to login in docker azure
+docker login containerapi.azurecr.io -u containerapi -p m5oE69+fi5/gghN2McQKLfCI9qF//LnYOPVbEywpRI+ACRA3aCao
+ 
+Example
+➜  Github_FastAPIExample git:(main) ✗ docker login containerapi.azurecr.io -u containerapi -p m5oE69+fi5/gghN2McQKLfCI9qF//LnYOPVbEywpRI+ACRA3aCao
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Login Succeeded
+➜  Github_FastAPIExample git:(main) ✗
+ 
+**** Command to build the image iin azure: use version latest or 1
+docker build -t containerapi.azurecr.io/api-backend:latest .
+ 
+**** Command to add the image in azure: use version latest or 1
+docker push containerapi.azurecr.io/api-backend:latest

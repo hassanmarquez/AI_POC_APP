@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Load Document To Azure Search</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {{form.hidden_tag()}}
+        {{form.file()}} <br><br>
+        <label for="title">Title</label> <br>
+        {{form.title()}} <br><br>
+        {{form.submit()}}
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+curl -X POST https://api-assistant-bxhecugyapcphjfr.eastus-01.azurewebsites.net:8000/assistant/prompt_messages \
+-H "Content-Type: application/json" \
+-d '{
+    "messages": [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Tell me a joke."},
+        {"role": "assistant", "content": "Why dont scientists trust atoms? Because they make up everything!"}
+    ]
+}'
+
+
+curl -X POST http://localhost:5000/assistant/prompt_messages \
+-H "Content-Type: application/json" \
+-d '{
+    "messages": [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Tell me a joke."},
+        {"role": "assistant", "content": "Why dont scientists trust atoms? Because they make up everything!"}
+    ]
+}'
+
+
+curl -X GET https://api-assistant.azurewebsites.net/
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+
+curl -X POST "https://api-assistant-bxhecugyapcphjfr.eastus-01.azurewebsites.net/" 
+-H "accept: application/json" 
+-H "Content-Type: application/json" 
+-d "{ \"messages\": [ { \"role\": \"system\", \"content\": \"You are a helpful assistant.\" }, { \"role\": \"user\", \"content\": \"Tell me a joke.\" },{\"role\": \"assistant\", \"content\": \"Why don't scientists trust atoms? Because they make up everything!\"} ]}"
