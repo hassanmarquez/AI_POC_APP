@@ -130,11 +130,6 @@ celerybeat.pid
 # Environments
 .env
 .env.example
-<<<<<<< HEAD
-*autogen_service.py
-=======
-autogen_service.py
->>>>>>> 45293b32c9f6e815b993e1c26d99b3c806d0d5c1
 .venv
 env/
 venv/
